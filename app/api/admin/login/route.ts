@@ -24,6 +24,14 @@ export async function POST(req: Request) {
       );
     }
 
+    // Ensure token exists before proceeding
+    if (!result.token) {
+      return NextResponse.json(
+        { error: "Failed to create session" },
+        { status: 500 }
+      );
+    }
+
     const response = NextResponse.json({ ok: true });
 
     // Set both legacy cookie and new JWT token
