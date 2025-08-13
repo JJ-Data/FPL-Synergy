@@ -52,7 +52,7 @@ export default function HomePage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Link href="/register" className="btn btn-primary">
-              🚀 Join Competition
+              Join Competition
             </Link>
             <Link href="/leaderboard" className="btn">
               📈 View Leaderboard
@@ -120,7 +120,7 @@ export default function HomePage() {
       {/* Find Your Team ID Help */}
       <details className="card">
         <summary className="cursor-pointer font-medium mb-2 hover:text-blue-400 transition-colors">
-          🤔 How to find your FPL Team ID
+          How to find your FPL Team ID
         </summary>
         <div className="pt-2 space-y-2 text-sm text-neutral-400">
           <ol className="list-decimal ml-5 space-y-1">
