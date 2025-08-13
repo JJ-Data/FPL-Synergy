@@ -21,9 +21,6 @@ export default function RootLayout({
               <Link className="btn" href="/monthly">
                 Monthly
               </Link>
-              <Link className="btn" href="/admin">
-                Admin
-              </Link>
               <Link className="btn" href="/register">
                 Register
               </Link>
