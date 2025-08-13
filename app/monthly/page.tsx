@@ -34,8 +34,8 @@ export default function MonthlyPage() {
 
   function exportCSV() {
     if (!data?.leaderboard) return;
-    const rows = data.leaderboard;
-    const header = [
+    const rows: any[] = data.leaderboard;
+    const header: string[] = [
       "Rank",
       "Name",
       "Email",
@@ -44,23 +44,26 @@ export default function MonthlyPage() {
       "MonthPoints",
       "SeasonTotal",
     ];
-    const body = rows.map((r: any) => [
-      r.rank,
-      r.name,
-      r.email,
-      r.company || "",
-      r.entryId,
-      r.monthPoints,
-      r.seasonTotal,
-    ]);
-    const lines = [header, ...body].map((cols) =>
-      cols
-        .map((v) => {
-          const s = String(v ?? "");
-          // Escape CSV: wrap in quotes if needed and escape inner quotes
-          return /[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
-        })
-        .join(",")
+    const body: (string | number | null | undefined)[][] = rows.map(
+      (r: any) => [
+        r.rank,
+        r.name,
+        r.email,
+        r.company ?? "",
+        r.entryId,
+        r.monthPoints,
+        r.seasonTotal,
+      ]
+    );
+    const lines = [header, ...body].map(
+      (cols: (string | number | null | undefined)[]) =>
+        cols
+          .map((v: string | number | null | undefined) => {
+            const s = String(v ?? "");
+            // Escape CSV: wrap in quotes if needed and escape inner quotes
+            return /[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
+          })
+          .join(",")
     );
     const blob = new Blob([lines.join("\n")], { type: "text/csv" });
     const url = URL.createObjectURL(blob);
